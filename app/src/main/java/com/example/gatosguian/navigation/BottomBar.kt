@@ -48,7 +48,7 @@ fun MyBottomBar(){
 
                     modifier = Modifier.weight(1f)) {
                     Icon(
-                        //painter = painterResource(id = R.drawable.baseline_home_filled_24),
+                        painter = painterResource(id = R.drawable.baseline_home_filled_24),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.size(50.dp)
@@ -60,13 +60,13 @@ fun MyBottomBar(){
                 IconButton(
                     onClick = {
                         select.value = Icons.Default.AccountCircle
-                       // navigationController.navigate(AppScreens.Login.route){
+                        navigationController.navigate(AppScreens.LoginScreen.route){
                             popUpTo(0)
                         }
                     },
                     modifier = Modifier.weight(1f)) {
                     Icon(
-                      //  painter = painterResource(id = R.drawable.baseline_star_rate_24),
+                        painter = painterResource(id = R.drawable.baseline_star_rate_24),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.size(50.dp)
@@ -76,13 +76,13 @@ fun MyBottomBar(){
                 IconButton(
                     onClick = {
                         select.value = Icons.Default.AccountCircle
-                       // navigationController.navigate(AppScreens.Login.route){
+                        navigationController.navigate(AppScreens.LoginScreen.route){
                             popUpTo(0)
                         }
                     },
                     modifier = Modifier.weight(1f)) {
                     Icon(
-                       // painter = painterResource(id = R.drawable.baseline_shopping_cart_24),
+                        painter = painterResource(id = R.drawable.baseline_shopping_cart_24),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.size(50.dp)
@@ -92,13 +92,13 @@ fun MyBottomBar(){
                 IconButton(
                     onClick = {
                         select.value = Icons.Default.AccountCircle
-                       // navigationController.navigate(AppScreens.Login.route){
+                        navigationController.navigate(AppScreens.LoginScreen.route){
                             popUpTo(0)
                         }
                     },
                     modifier = Modifier.weight(1f)) {
                     Icon(
-                     //   painter = painterResource(id = R.drawable.baseline_person_24),
+                        painter = painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.size(50.dp)
@@ -121,15 +121,15 @@ fun MyBottomBar(){
         NavHost(navController = navigationController,
             startDestination = AppScreens.MainScreen.route,
             modifier = Modifier.padding(paddingValues)){
-            //   composable(AppScreens.MainScreen.route){ MainScreen(viewModel = ProductsViewModel()) }
-           // composable(AppScreens.Login.route){ LoginScreen() }
+            composable(AppScreens.MainScreen.route){ MainScreen(viewModel = ProductsViewModel(), viewModelJuegos = JuegosViewModel(), navigationController) }
+            composable(AppScreens.LoginScreen.route){ LoginScreen() }
 
         }
     }
-}*/
+}
 
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewBottomBar(){
-    //MyBottomBar()
-}
+    MyBottomBar()
+}*/
