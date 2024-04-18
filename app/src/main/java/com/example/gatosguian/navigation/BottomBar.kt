@@ -25,7 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.gatosguian.R
 import com.example.gatosguian.view.LoginScreen
 import com.example.gatosguian.view.MainScreen
-/*@Composable
+@Composable
 fun MyBottomBar(){
     val navigationController = rememberNavController()
     val context = LocalContext.current.applicationContext
@@ -105,18 +105,18 @@ fun MyBottomBar(){
 
                     )
                 }
-                /* Box(modifier = Modifier
+                 Box(modifier = Modifier
                      .weight(1f)
                      .padding(16.dp),
                      contentAlignment = Alignment.Center){
                      FloatingActionButton(onClick = { Toast.makeText(context, "open botton shep", Toast.LENGTH_SHORT).show() }) {
                          Icon(Icons.Default.Add, contentDescription = null, tint = Color.Green)
                      }
-                 }*/
+                 }
             }
         }
     )
-    {
+   /* {
             paddingValues->
         NavHost(navController = navigationController,
             startDestination = AppScreens.MainScreen.route,
@@ -125,11 +125,11 @@ fun MyBottomBar(){
             composable(AppScreens.LoginScreen.route){ LoginScreen() }
 
         }
-    }
+    }*/
 }
 
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewBottomBar(){
     MyBottomBar()
-}*/
+}
