@@ -16,7 +16,7 @@ class GatosViewModel: ViewModel(){
     val filteredGatos: StateFlow<List<Cat>> = _filteredGatos
 
     fun getGatoById(catId: Int): Cat? {
-        return allGatos.find { it.id == catId } // Suponiendo que Product tiene una propiedad "id" que es String
+        return allGatos.find { it.id == catId } // Suponiendo que gatos tiene una propiedad "id" que es String
     }
     init {
         fetchGatos()
@@ -35,7 +35,7 @@ class GatosViewModel: ViewModel(){
                 )
             }
             allGatos.addAll(catsResponse)
-            _filteredGatos.value = allGatos.toList() // Al inicio, los productos filtrados serán todos los productos disponibles
+            _filteredGatos.value = allGatos.toList() // Al inicio, los productos filtrados serán todos los gatos disponibles
         }
     }
 

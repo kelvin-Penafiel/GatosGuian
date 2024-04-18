@@ -8,7 +8,7 @@ import com.example.gatosguian.view.GatosViewModel
 import com.example.gatosguian.view.MainScreen
 import com.example.gatosguian.view.SplashScreen
 import com.example.gatosguian.view.Camera
-import com.example.gatosguian.view.Login
+import com.example.gatosguian.view.LoginScreen
 
 @Composable
 fun AppNavigation(){
@@ -28,8 +28,8 @@ fun AppNavigation(){
             Camera(navController)
         }
 
-        //composable(AppScreens.Login.route) {
-          //  Login(navController)
-        //}
+        composable(AppScreens.LoginScreen.route) {
+            LoginScreen()
+        }
     }
 }
