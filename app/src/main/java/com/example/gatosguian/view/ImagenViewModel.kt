@@ -3,46 +3,49 @@ package com.example.gatosguian.view
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.viewModelScope
 import com.example.gatosguian.data.CatsRepository
+import com.example.gatosguian.data.ImagensRepository
 import com.example.gatosguian.model.Cat
+import com.example.gatosguian.model.Imagen
+import com.example.gatosguian.model.ImagenResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class ImagenViewModel ViewModel(){
-    private val catsRepository = CatsRepository()
-    private val allGatos = mutableStateListOf<Cat>()
-    private val _filteredGatos = MutableStateFlow<List<Cat>>(emptyList())
-    val filteredGatos: StateFlow<List<Cat>> = _filteredGatos
+    private val ImagesRepository = ImagensRepositorys()
+    private val allImagen = mutableStateListOf<Imagen>()
+    private val _filteredImagen = MutableStateFlow<List<Imagen>>(emptyList())
+    val filteredImagen: StateFlow<List<Imagen>> = _filteredGatos
 
-    fun getGatoById(catId: Int): Cat? {
-        return allGatos.find { it.id == catId } // Suponiendo que gatos tiene una propiedad "id" que es String
+    fun getImagenById(ImagenId: Int): Imagen? {
+        return allImagen.find { it.id == ImagenId } // Suponiendo que gatos tiene una propiedad "id" que es String
     }
     init {
-        fetchGatos()
+        fetchImagen()
     }
 
-    fun fetchGatos() {
+    fun fetchImagen() {
         viewModelScope.launch {
-            val response = catsRepository.getCats()
-            val catsResponse = response.map { catResponse ->
+            val response = ImagesRepository.getImagen()
+            val imagenResponse = response.map { imagenResponse ->
                 Cat(
-                    catResponse.id,
-                    catResponse.name,
-                    catResponse.origin,
-                    catResponse.temperament,
-                    catResponse.image
+                    imagenResponse.id,
+                    imagenResponse.url,
+                    imagenResponse.width,
+                    imagenResponse.height
+
                 )
             }
-            allGatos.addAll(catsResponse)
-            _filteredGatos.value = allGatos.toList() // Al inicio, los productos filtrados serán todos los gatos disponibles
+            allImagen.addAll(imagenResponse)
+            _filteredImagen.value = allImagen.toList() // Al inicio, los productos filtrados serán todos los gatos disponibles
         }
     }
 
     fun filterProducts(query: String) {
         val lowercaseQuery = query.lowercase()
-        _filteredGatos.value = allGatos.filter { cat ->
-            cat.name.lowercase().contains(lowercaseQuery) ||
-                    cat.name.lowercase().contains(lowercaseQuery)
+        _filteredImagen.value = allImagen.filter { imagen ->
+            imagen.url.lowercase().contains(lowercaseQuery) ||
+                    imagen.url.lowercase().contains(lowercaseQuery)
         }
     }
 }

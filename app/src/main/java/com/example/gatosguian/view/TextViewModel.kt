@@ -1,48 +1,51 @@
 package com.example.gatosguian.view
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.core.provider.FontsContractCompat
 import androidx.lifecycle.viewModelScope
-import com.example.gatosguian.data.CatsRepository
-import com.example.gatosguian.model.Cat
+
+import com.example.gatosguian.data.TextsRepository
+
+import com.example.gatosguian.model.Text
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class TextViewModel ViewModel(){
-    private val catsRepository = CatsRepository()
-    private val allGatos = mutableStateListOf<Cat>()
-    private val _filteredGatos = MutableStateFlow<List<Cat>>(emptyList())
-    val filteredGatos: StateFlow<List<Cat>> = _filteredGatos
+    private val textsRepository = TextsRepository()
+    private val allText= mutableStateListOf<Text>()
+    private val _filteredText = MutableStateFlow<List<Text>>(emptyList())
+    val filteredText: StateFlow<List<Text>> = _filteredText
 
-    fun getGatoById(catId: Int): Cat? {
-        return allGatos.find { it.id == catId } // Suponiendo que gatos tiene una propiedad "id" que es String
+    fun getGatoById(textId: Int): Text? {
+        return allText.find { it.id == textId } // Suponiendo que gatos tiene una propiedad "id" que es String
     }
     init {
-        fetchGatos()
+        fetchText()
     }
 
-    fun fetchGatos() {
+    fun fetchText() {
         viewModelScope.launch {
-            val response = catsRepository.getCats()
-            val catsResponse = response.map { catResponse ->
+            val response = textsRepository.getText()
+            val textResponse = response.map { textResponse ->
                 Cat(
-                    catResponse.id,
-                    catResponse.name,
-                    catResponse.origin,
-                    catResponse.temperament,
-                    catResponse.image
+                    textResponse.id,
+                    textResponse.text,
+                    textResponse.typer,
+                    textResponse.updatedAt,
+                    textResponse.createdAt
                 )
             }
-            allGatos.addAll(catsResponse)
-            _filteredGatos.value = allGatos.toList() // Al inicio, los productos filtrados serán todos los gatos disponibles
+            allText.addAll(textResponse)
+            _filteredText.value = allText.toList() // Al inicio, los productos filtrados serán todos los gatos disponibles
         }
     }
 
     fun filterProducts(query: String) {
         val lowercaseQuery = query.lowercase()
-        _filteredGatos.value = allGatos.filter { cat ->
-            cat.name.lowercase().contains(lowercaseQuery) ||
-                    cat.name.lowercase().contains(lowercaseQuery)
+        _filteredText.value = allText.filter { text ->
+            text.text.lowercase().contains(lowercaseQuery) ||
+                    cat.text.lowercase().contains(lowercaseQuery)
         }
     }
 }
