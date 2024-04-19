@@ -5,6 +5,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.gatosguian.view.GatosViewModel
+import com.example.gatosguian.view.TextViewModel
+import com.example.gatosguian.view.ImagenViewModel
 import com.example.gatosguian.view.MainScreen
 import com.example.gatosguian.view.SplashScreen
 import com.example.gatosguian.view.Camera
@@ -21,7 +23,7 @@ fun AppNavigation(){
            SplashScreen(navController)
        }
         composable(AppScreens.MainScreen.route){
-            MainScreen(viewModel = GatosViewModel(),viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navController)
+            MainScreen(viewModel = GatosViewModel(),viewModelText= TextViewModel(),viewModelImage= ImagenViewModel(), navController)
         }
 
         composable(AppScreens.Camera.route) {
