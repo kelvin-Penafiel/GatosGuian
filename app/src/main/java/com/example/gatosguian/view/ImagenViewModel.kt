@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class ImagenViewModel ViewModel(){
-    private val ImagesRepository = ImagensRepositorys()
+class ImagenViewModel: ViewModel(){
+    private val ImagesRepository = ImagensRepository()
     private val allImagen = mutableStateListOf<Imagen>()
     private val _filteredImagen = MutableStateFlow<List<Imagen>>(emptyList())
-    val filteredImagen: StateFlow<List<Imagen>> = _filteredGatos
+    val filteredImagen: StateFlow<List<Imagen>> = _filteredImagen
 
     fun getImagenById(ImagenId: Int): Imagen? {
         return allImagen.find { it.id == ImagenId } // Suponiendo que gatos tiene una propiedad "id" que es String
@@ -26,9 +26,9 @@ class ImagenViewModel ViewModel(){
 
     fun fetchImagen() {
         viewModelScope.launch {
-            val response = ImagesRepository.getImagen()
-            val imagenResponse = response.map { imagenResponse ->
-                Cat(
+            val response = ImagensRepository.getImagen()
+            val imagensResponse = response.map { imagenResponse ->
+                Imagen(
                     imagenResponse.id,
                     imagenResponse.url,
                     imagenResponse.width,
@@ -36,7 +36,7 @@ class ImagenViewModel ViewModel(){
 
                 )
             }
-            allImagen.addAll(imagenResponse)
+            allImagen.addAll(imagensResponse)
             _filteredImagen.value = allImagen.toList() // Al inicio, los productos filtrados serán todos los gatos disponibles
         }
     }

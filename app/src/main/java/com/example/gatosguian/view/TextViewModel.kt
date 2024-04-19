@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class TextViewModel ViewModel(){
+class TextViewModel: ViewModel(){
     private val textsRepository = TextsRepository()
     private val allText= mutableStateListOf<Text>()
     private val _filteredText = MutableStateFlow<List<Text>>(emptyList())
@@ -26,9 +26,9 @@ class TextViewModel ViewModel(){
 
     fun fetchText() {
         viewModelScope.launch {
-            val response = textsRepository.getText()
-            val textResponse = response.map { textResponse ->
-                Cat(
+            val response = textsRepository.getTexts()
+            val textsResponse = response.map { textResponse ->
+                Text(
                     textResponse.id,
                     textResponse.text,
                     textResponse.typer,
@@ -36,7 +36,7 @@ class TextViewModel ViewModel(){
                     textResponse.createdAt
                 )
             }
-            allText.addAll(textResponse)
+            allText.addAll(textsResponse)
             _filteredText.value = allText.toList() // Al inicio, los productos filtrados serán todos los gatos disponibles
         }
     }
