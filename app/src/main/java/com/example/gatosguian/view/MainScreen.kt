@@ -153,7 +153,7 @@ fun Opiniones(navHostController: NavHostController) {
         Busqueda()
         //ListProduct(viewModel = viewModel, navHostController)
         //Icon(Icons.Outlined.Build, "Amiibos")
-        Text(text = "Juguetes")//contenido de la pagina
+        Text(text = "Opinion")//contenido de la pagina
     }
 }
 @Composable
@@ -168,7 +168,7 @@ fun Fotos(navHostController: NavHostController) {
         Busqueda()
         //ListProduct(viewModel = viewModel, navHostController)
         //Icon(Icons.Outlined.Build, "Amiibos")
-        Text(text = "Veterinarios")//contenido de la pagina
+        Text(text = "Fotos")//contenido de la pagina
     }
 }
 
