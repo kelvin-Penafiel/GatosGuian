@@ -45,7 +45,7 @@ class TextViewModel ViewModel(){
         val lowercaseQuery = query.lowercase()
         _filteredText.value = allText.filter { text ->
             text.text.lowercase().contains(lowercaseQuery) ||
-                    cat.text.lowercase().contains(lowercaseQuery)
+                    text.text.lowercase().contains(lowercaseQuery)
         }
     }
 }

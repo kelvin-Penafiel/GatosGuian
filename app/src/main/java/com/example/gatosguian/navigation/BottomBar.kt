@@ -25,7 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.gatosguian.R
 import com.example.gatosguian.view.LoginScreen
 import com.example.gatosguian.view.MainScreen
-@Composable
+/*@Composable
 fun MyBottomBar(){
     val navigationController = rememberNavController()
     val context = LocalContext.current.applicationContext
@@ -132,4 +132,4 @@ fun MyBottomBar(){
 @Composable
 fun PreviewBottomBar(){
     MyBottomBar()
-}
+*/
