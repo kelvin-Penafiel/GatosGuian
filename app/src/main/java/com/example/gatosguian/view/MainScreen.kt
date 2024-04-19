@@ -127,7 +127,7 @@ fun TabsContent(tabs: List<ItemTabs>, pagerState: PagerState, viewModel: GatosVi
 }
 
 @Composable
-fun Gatos(viewModel: GatosViewModel, navHostController: NavHostController) {
+fun Gatos(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel: ImagenViewModel, navHostController: NavHostController) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
