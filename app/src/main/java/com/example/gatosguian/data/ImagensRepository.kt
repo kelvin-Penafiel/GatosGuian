@@ -8,7 +8,7 @@ class ImagensRepository {
 
     private val imagensService = RetrofitInstance.imagensService
 
-    suspend fun getTexts(): List<ImagenResponse> {
+    suspend fun getImagens(): List<ImagenResponse> {
         return imagensService.getImagens()
     }
 }
