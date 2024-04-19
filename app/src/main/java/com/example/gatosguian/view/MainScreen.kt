@@ -58,7 +58,7 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun MainScreen(viewModel: GatosViewModel, navHostController: NavHostController){
+fun MainScreen(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel: ImagenViewModel, navHostController: NavHostController){
     Column() {
 
         Box(modifier = Modifier.weight(1f)) {
@@ -69,7 +69,7 @@ fun MainScreen(viewModel: GatosViewModel, navHostController: NavHostController){
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MovimientosTab(viewModel: GatosViewModel, navHostController: NavHostController){
+fun MovimientosTab(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel: ImagenViewModel navHostController: NavHostController){
     val tabs = listOf(
         ItemTabs.tab_gatos,
         ItemTabs.tab_juguetes,
