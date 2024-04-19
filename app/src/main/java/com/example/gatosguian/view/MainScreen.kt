@@ -53,6 +53,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.gatosguian.model.Product
 import com.example.gatosguian.model.Cat
+import com.example.gatosguian.model.Text
+import com.example.gatosguian.model.Imagen
 import com.example.gatosguian.navigation.ItemTabs
 import kotlinx.coroutines.launch
 
@@ -413,14 +415,14 @@ fun Imagen (imagen: Imagen){
             )
         }
         Spacer(modifier = Modifier.weight(1f))
-        Text(
+        /*Text(
             text =imagen.temperament,
             fontSize = 14.sp,
             //color = Color.Green.copy(alpha = 0.9f),
             color = Color(0xFF3F51B5),
             modifier = Modifier
                 .padding(horizontal = 8.dp)
-        )
+        )*/
     }
     Divider()
 }
