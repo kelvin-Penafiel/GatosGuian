@@ -2,6 +2,8 @@ package com.example.gatosguian.view
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.core.provider.FontsContractCompat
+
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.gatosguian.data.TextsRepository

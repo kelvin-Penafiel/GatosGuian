@@ -1,7 +1,9 @@
 package com.example.gatosguian.view
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+
 import com.example.gatosguian.data.CatsRepository
 import com.example.gatosguian.data.ImagensRepository
 import com.example.gatosguian.model.Cat
