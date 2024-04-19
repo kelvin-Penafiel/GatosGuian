@@ -198,7 +198,7 @@ fun ListGatos(viewModel: GatosViewModel, navHostController: NavHostController) {
 @Composable
 fun ListText(viewModelText: TextViewModel, navHostController: NavHostController) {
 
-    val text by viewModelText.filteredGatos.collectAsState()
+    val text by viewModelText.filteredText.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModelText.fetchText()
@@ -219,7 +219,7 @@ fun ListText(viewModelText: TextViewModel, navHostController: NavHostController)
 @Composable
 fun ListImagen(viewModelImage: ImagenViewModel, navHostController: NavHostController) {
 
-    val imagen by viewModelImage.filteredGatos.collectAsState()
+    val imagen by viewModelImage.filteredImagen.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModelImage.fetchImagen()
