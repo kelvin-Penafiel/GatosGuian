@@ -21,7 +21,7 @@ fun AppNavigation(){
            SplashScreen(navController)
        }
         composable(AppScreens.MainScreen.route){
-            MainScreen(viewModel = GatosViewModel(), navController)
+            MainScreen(viewModel = GatosViewModel(),viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navController)
         }
 
         composable(AppScreens.Camera.route) {

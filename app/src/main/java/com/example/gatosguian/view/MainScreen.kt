@@ -151,7 +151,7 @@ fun Opiniones(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelIm
     )
     {
         //Busqueda()
-        ListText(viewModel = viewModel, navHostController)
+        ListText(viewModelText = viewModelText, navHostController)
         //Icon(Icons.Outlined.Build, "Amiibos")
         //Text(text = "Opinion")//contenido de la pagina
     }
@@ -166,7 +166,7 @@ fun Fotos(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage:
     )
     {
         //Busqueda()
-        ListImagen(viewModel = viewModel, navHostController)
+        ListImagen(viewModelImage = viewModelImage, navHostController)
         //Icon(Icons.Outlined.Build, "Amiibos")
         //Text(text = "Fotos")//contenido de la pagina
     }
@@ -194,6 +194,48 @@ fun ListGatos(viewModel: GatosViewModel, navHostController: NavHostController) {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Composable
+fun ListText(viewModelText: TextViewModel, navHostController: NavHostController) {
+
+    val text by viewModelText.filteredGatos.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModelText.fetchText()
+    }
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        items(text) { currentProduct ->
+            Text(text = currentProduct)
+        }
+
+    }
+}
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Composable
+fun ListImagen(viewModelImage: ImagenViewModel, navHostController: NavHostController) {
+
+    val imagen by viewModelImage.filteredGatos.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModelImage.fetchImagen()
+    }
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        items(imagen) { currentProduct ->
+            Imagen(imagen = currentProduct)
+        }
+
+    }
+}
 
 @Composable
 fun Busqueda(){
