@@ -323,6 +323,99 @@ fun Cat (cat: Cat){
 }
 
 
+@Composable
+fun Text (text: Text){
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+
+        ) {
+        //https://assets.coincap.io/assets/icons/btc@2x.png
+        Box(modifier = Modifier.padding(horizontal = 8.dp)) {
+
+            Icon(
+                imageVector = Icons.Filled.AccountBox,
+                contentDescription = null,
+                tint = Color.Gray,
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(30.dp)
+            )
+
+        }
+        Column() {
+            Text(
+                text = text.name,
+                fontSize = 16.sp,
+                color = Color.Black
+            )
+            Text(
+                text =text.origin,
+                fontSize =14.sp,
+                color = Color.Gray
+            )
+        }
+        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            text =text.temperament,
+            fontSize = 14.sp,
+            //color = Color.Green.copy(alpha = 0.9f),
+            color = Color(0xFF3F51B5),
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
+        )
+    }
+    Divider()
+}
+
+@Composable
+fun Imagen (imagen: Imagen){
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+
+        ) {
+        //https://assets.coincap.io/assets/icons/btc@2x.png
+        Box(modifier = Modifier.padding(horizontal = 8.dp)) {
+
+            Icon(
+                imageVector = Icons.Filled.AccountBox,
+                contentDescription = null,
+                tint = Color.Gray,
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(30.dp)
+            )
+
+        }
+        Column() {
+            Text(
+                text = imagen.name,
+                fontSize = 16.sp,
+                color = Color.Black
+            )
+            Text(
+                text =imagen.origin,
+                fontSize =14.sp,
+                color = Color.Gray
+            )
+        }
+        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            text =imagen.temperament,
+            fontSize = 14.sp,
+            //color = Color.Green.copy(alpha = 0.9f),
+            color = Color(0xFF3F51B5),
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
+        )
+    }
+    Divider()
+}
 
 
 @Preview(
