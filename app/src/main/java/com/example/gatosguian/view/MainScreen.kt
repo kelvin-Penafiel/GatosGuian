@@ -335,31 +335,39 @@ fun Text (text: Text){
         //https://assets.coincap.io/assets/icons/btc@2x.png
         Box(modifier = Modifier.padding(horizontal = 8.dp)) {
 
-            Icon(
+           /* Icon(
                 imageVector = Icons.Filled.AccountBox,
                 contentDescription = null,
                 tint = Color.Gray,
                 modifier = Modifier
                     .padding(8.dp)
                     .size(30.dp)
-            )
+            )*/
 
         }
         Column() {
             Text(
-                text = text.name,
+                text = text.text,
                 fontSize = 16.sp,
                 color = Color.Black
             )
             Text(
-                text =text.origin,
+                text =text.typer,
                 fontSize =14.sp,
                 color = Color.Gray
             )
         }
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            text =text.temperament,
+            text =text.updatedAt,
+            fontSize = 14.sp,
+            //color = Color.Green.copy(alpha = 0.9f),
+            color = Color(0xFF3F51B5),
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
+        )
+        Text(
+            text =text.createdAt,
             fontSize = 14.sp,
             //color = Color.Green.copy(alpha = 0.9f),
             color = Color(0xFF3F51B5),
@@ -394,12 +402,12 @@ fun Imagen (imagen: Imagen){
         }
         Column() {
             Text(
-                text = imagen.name,
+                text = imagen.width,
                 fontSize = 16.sp,
                 color = Color.Black
             )
             Text(
-                text =imagen.origin,
+                text =imagen.height,
                 fontSize =14.sp,
                 color = Color.Gray
             )
