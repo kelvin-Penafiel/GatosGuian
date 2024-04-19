@@ -1,6 +1,7 @@
 package com.example.gatosguian.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -40,7 +41,7 @@ fun ContenidoNewCats(productImage: String,navHostController: NavHostController){
     var Nombre = remember { mutableStateOf("") }
     var descripcion = remember { mutableStateOf("") }
     var color = remember { mutableStateOf("") }
-    TopBar("Nuevo",navHostController)
+    TopBar("Nuevo Gato",navHostController)
     Box(
         modifier = Modifier
             .padding(horizontal = 8.dp)
@@ -52,18 +53,35 @@ fun ContenidoNewCats(productImage: String,navHostController: NavHostController){
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            if(productImage.isNotEmpty()){
-                Image(
-                    painter = rememberImagePainter(productImage),
-                    contentDescription = "logo Gatosguiar",
-                    modifier = Modifier.size(160.dp)
-                )
-            }else{
-                Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                    contentDescription = "logo Gatosguiar",
-                    modifier = Modifier.size(160.dp)
+            Box(
+                modifier = Modifier
+                    .size(160.dp)
+                    .padding(4.dp) // Ajusta el espacio entre la imagen y el borde aquí
+                    .border(1.dp, Color.Gray, shape = RoundedCornerShape(4.dp))
+            ) {
+                if (productImage.isNotEmpty()) {
+                    Image(
+                        painter = rememberImagePainter(productImage),
+                        contentDescription = "logo Gatosguiar",
+                        modifier = Modifier.size(160.dp)
+                    )
+                } else {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                        contentDescription = "logo Gatosguiar",
+                        modifier = Modifier.size(160.dp)
+                    )
+                }
+            }
+            IconButton(
+                onClick = { navHostController.navigate("camera") },
+                modifier = Modifier
+                    .padding(16.dp)
+                    //.align(Alignment.TopEnd)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_camera_alt_24), // Aquí debes reemplazar ic_camera con el nombre de tu icono de cámara
+                    contentDescription = "Botón de cámara"
                 )
             }
 
@@ -114,23 +132,13 @@ fun ContenidoNewCats(productImage: String,navHostController: NavHostController){
                 onClick = { },
                 Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff0000ff))
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF434343))
             ) {
-                Text(text = "Añadir gatosguiar", fontSize = 15.sp)
+                Text(text = "Añadir Gato", fontSize = 15.sp)
             }
 
         }
-        IconButton(
-            onClick = { navHostController.navigate("camera") },
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.TopEnd)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_camera_alt_24), // Aquí debes reemplazar ic_camera con el nombre de tu icono de cámara
-                contentDescription = "Botón de cámara"
-            )
-        }
+
     }
 }
 

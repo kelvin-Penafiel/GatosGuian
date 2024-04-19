@@ -19,7 +19,7 @@ class ImagenViewModel: ViewModel(){
     private val _filteredImagen = MutableStateFlow<List<Imagen>>(emptyList())
     val filteredImagen: StateFlow<List<Imagen>> = _filteredImagen
 
-    fun getImagenById(ImagenId: Int): Imagen? {
+    fun getImagenById(ImagenId: String): Imagen? {
         return allImagen.find { it.id == ImagenId } // Suponiendo que gatos tiene una propiedad "id" que es String
     }
     init {
@@ -33,8 +33,8 @@ class ImagenViewModel: ViewModel(){
                 Imagen(
                     imagenResponse.id,
                     imagenResponse.url,
-                    imagenResponse.width,
-                    imagenResponse.height
+                 //   imagenResponse.width,
+                 //   imagenResponse.height
 
                 )
             }
@@ -46,8 +46,8 @@ class ImagenViewModel: ViewModel(){
     fun filterProducts(query: String) {
         val lowercaseQuery = query.lowercase()
         _filteredImagen.value = allImagen.filter { imagen ->
-            imagen.width.lowercase().contains(lowercaseQuery) ||
-                    imagen.width.lowercase().contains(lowercaseQuery)
+            imagen.url.lowercase().contains(lowercaseQuery) ||
+                    imagen.url.lowercase().contains(lowercaseQuery)
         }
     }
 }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,7 @@ import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -35,7 +37,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.gatosguian.R
+import com.example.gatosguian.navigation.TopBar
 
 
 /*@SuppressLint("RememberReturnType")
@@ -115,15 +119,25 @@ fun CameraController(
 
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navHostController: NavHostController) {
 Box(
 modifier = Modifier
 .fillMaxSize()
 .padding(16.dp)
 ) {
-    Login(Modifier.align(Alignment.Center))
+    Scaffold(
+        topBar = {
+            TopBar(texto = "Login", navHostController = navHostController)
+
+        }) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+        Login(Modifier.align(Alignment.Center))
+        }
+    }
+    }
+
 }
-}
+
 @Composable
 fun Login(modifier: Modifier) {
     Column(
@@ -256,8 +270,9 @@ fun Version() {
     }
 }
 
+/*
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewForm() {
     LoginScreen()
-}
+}*/

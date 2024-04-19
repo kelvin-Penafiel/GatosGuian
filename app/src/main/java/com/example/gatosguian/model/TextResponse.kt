@@ -2,9 +2,9 @@ package com.example.gatosguian.model
 
 data class TextResponse (
 
-    val id: Int,
+    val id: String,
     val text: String,
-    val typer: String,
+    val type: String,
     val updatedAt: String,
     val createdAt: String
 )

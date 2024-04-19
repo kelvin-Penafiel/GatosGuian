@@ -27,21 +27,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavHostController
+import com.example.gatosguian.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(texto: String, navHostController: NavHostController){
     //  val navigationController = rememberNavController()
-    Scaffold(
+  /*  Scaffold(
         modifier = Modifier
             .fillMaxWidth()
             .height(60.dp),
-        topBar = {
+        topBar = {*/
             TopAppBar(
                 navigationIcon = {
                     IconButton(onClick = { navHostController.navigateUp() }) {
@@ -53,20 +55,14 @@ fun TopBar(texto: String, navHostController: NavHostController){
 
                 },
                 actions = {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { navHostController.navigate("camera") }) {
                         Icon(
-                            imageVector = Icons.Filled.Notifications, // Reemplaza "YourIcon" con el nombre del icono que desees usar
+                            painter = painterResource(id = R.drawable.baseline_camera_alt_24), // Reemplaza "YourIcon" con el nombre del icono que desees usar
                             contentDescription = null,
                             tint = Color.White
                         )
                     }
-                    IconButton(onClick = { /*TODO*/ }) {
-                        Icon(
-                            imageVector = Icons.Filled.Info, // Reemplaza "YourIcon" con el nombre del icono que desees usar
-                            contentDescription = null,
-                            tint = Color.White
-                        )
-                    }
+
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
                             imageVector = Icons.Filled.MoreVert, // Reemplaza "YourIcon" con el nombre del icono que desees usar
@@ -82,12 +78,12 @@ fun TopBar(texto: String, navHostController: NavHostController){
                     Text(text = "$texto", color = Color.White)
                 }
             )
-        },
+      /*  },
 
         content = {
             Contenido()
         }
-    )
+    )*/
 }
 
 @Composable

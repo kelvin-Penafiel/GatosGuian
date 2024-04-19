@@ -23,6 +23,10 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Divider
@@ -60,6 +64,7 @@ import com.example.gatosguian.model.Cat
 import com.example.gatosguian.model.Text
 import com.example.gatosguian.model.Imagen
 import com.example.gatosguian.navigation.ItemTabs
+import com.example.gatosguian.navigation.TopBar
 import kotlinx.coroutines.launch
 
 
@@ -67,10 +72,51 @@ import kotlinx.coroutines.launch
 fun MainScreen(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navHostController: NavHostController){
     Column() {
 
-        Box(modifier = Modifier.weight(1f)) {
-            MovimientosTab(viewModel = viewModel,viewModelText,viewModelImage, navHostController)
+       // TopBar(texto = "BlackCat", navHostController = navHostController)
+        Scaffold(
+            topBar = {
+                TopBar(texto = "BlackCat", navHostController = navHostController)
+
+            },
+
+            bottomBar = {
+                // Agregar una BottomAppBar
+                BottomAppBar(
+                    containerColor = Color.DarkGray
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        IconButton(
+                            onClick = { navHostController.navigate("main")  },
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            Icon( painter = painterResource(id = R.drawable.baseline_pets_24), contentDescription = "Home", tint = Color.White)
+                        }
+                        IconButton(
+                            onClick = { /* Hacer algo */ },
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            Icon(Icons.Default.Favorite, contentDescription = "Favorite", tint = Color.White)
+                        }
+                        IconButton(
+                            onClick = { navHostController.navigate("login") },
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            Icon(Icons.Default.AccountCircle, contentDescription = "Perfil", tint = Color.White)
+                        }
+                    }
+                }
+            }
+        ) { innerPadding ->
+            // Contenido del cuerpo del Scaffold
+            Box(modifier = Modifier.weight(1f) .padding(innerPadding)) {
+                MovimientosTab(viewModel = viewModel,viewModelText,viewModelImage, navHostController)
+            }
         }
     }
+
 }
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -143,8 +189,7 @@ fun Gatos(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage:
     {
         //Busqueda()
         ListGatos(viewModel = viewModel, navHostController)
-        //Icon(Icons.Outlined.Build, "Amiibos")
-        //Text(text = "Gatos")//contenido de la pagina
+
     }
 }
 @Composable
@@ -158,8 +203,7 @@ fun Opiniones(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelIm
     {
         //Busqueda()
         ListText(viewModelText = viewModelText, navHostController)
-        //Icon(Icons.Outlined.Build, "Amiibos")
-        //Text(text = "Opinion")//contenido de la pagina
+
     }
 }
 @Composable
@@ -173,9 +217,9 @@ fun Fotos(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage:
     {
         //Busqueda()
         ListImagen(viewModelImage = viewModelImage, navHostController)
-        //Icon(Icons.Outlined.Build, "Amiibos")
+
         //Text(text = "Fotos")//contenido de la pagina
-        IconButton(
+   /*     IconButton(
             onClick = { navHostController.navigate("camera") },
             modifier = Modifier
                 .padding(16.dp)
@@ -185,7 +229,7 @@ fun Fotos(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage:
                 painter = painterResource(id = R.drawable.baseline_camera_alt_24), // Aquí debes reemplazar ic_camera con el nombre de tu icono de cámara
                 contentDescription = "Botón de cámara"
             )
-        }
+        }*/
     }
 }
 
@@ -231,6 +275,7 @@ fun ListText(viewModelText: TextViewModel, navHostController: NavHostController)
 
     }
 }
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ListImagen(viewModelImage: ImagenViewModel, navHostController: NavHostController) {
@@ -304,7 +349,7 @@ fun Cat (cat: Cat){
         Box(modifier = Modifier.padding(horizontal = 8.dp)) {
 
             Icon(
-                imageVector = Icons.Filled.AccountBox,
+                painter = painterResource(id = R.drawable.baseline_pets_24),
                 contentDescription = null,
                 tint = Color.Gray,
                 modifier = Modifier
@@ -326,6 +371,13 @@ fun Cat (cat: Cat){
             )
         }
         Spacer(modifier = Modifier.weight(1f))
+        Column( horizontalAlignment = Alignment.End, modifier = Modifier.align(Alignment.Top)) {
+        Text(
+            text ="Caracteristicas",
+            fontSize = 14.sp,
+            //color = Color.Green.copy(alpha = 0.9f),
+            color = Color.Gray,
+        )
         Text(
             text =cat.temperament,
             fontSize = 14.sp,
@@ -334,6 +386,7 @@ fun Cat (cat: Cat){
             modifier = Modifier
                 .padding(horizontal = 8.dp)
         )
+        }
     }
     Divider()
 }
@@ -367,13 +420,13 @@ fun Text (text: Text){
                 fontSize = 16.sp,
                 color = Color.Black
             )
-            Text(
+         /*   Text(
                 text =text.typer,
                 fontSize =14.sp,
                 color = Color.Gray
-            )
+            )*/
         }
-        Spacer(modifier = Modifier.weight(1f))
+       /* Spacer(modifier = Modifier.weight(1f))
         Text(
             text =text.updatedAt,
             fontSize = 14.sp,
@@ -381,15 +434,15 @@ fun Text (text: Text){
             color = Color(0xFF3F51B5),
             modifier = Modifier
                 .padding(horizontal = 8.dp)
-        )
-        Text(
+        )*/
+        /*Text(
             text =text.createdAt,
             fontSize = 14.sp,
             //color = Color.Green.copy(alpha = 0.9f),
             color = Color(0xFF3F51B5),
             modifier = Modifier
                 .padding(horizontal = 8.dp)
-        )
+        )*/
     }
     Divider()
 }
@@ -423,7 +476,7 @@ fun Imagen (imagen: Imagen){
             modifier = Modifier.size(140.dp)
         )
         Column() {
-            Text(
+         /*   Text(
                 text = imagen.width,
                 fontSize = 16.sp,
                 color = Color.Black
@@ -432,7 +485,7 @@ fun Imagen (imagen: Imagen){
                 text =imagen.height,
                 fontSize =14.sp,
                 color = Color.Gray
-            )
+            )*/
         }
         Spacer(modifier = Modifier.weight(1f))
         /*Text(

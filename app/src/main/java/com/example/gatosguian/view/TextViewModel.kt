@@ -19,8 +19,8 @@ class TextViewModel: ViewModel(){
     private val _filteredText = MutableStateFlow<List<Text>>(emptyList())
     val filteredText: StateFlow<List<Text>> = _filteredText
 
-    fun getGatoById(textId: Int): Text? {
-        return allText.find { it.id == textId } // Suponiendo que gatos tiene una propiedad "id" que es String
+    fun getGatoById(textId: String): Text? {
+        return allText.find { it.text == textId } // Suponiendo que gatos tiene una propiedad "id" que es String
     }
     init {
         fetchText()
@@ -31,9 +31,9 @@ class TextViewModel: ViewModel(){
             val response = textsRepository.getTexts()
             val textsResponse = response.map { textResponse ->
                 Text(
-                    textResponse.id,
+                    //textResponse.id,
                     textResponse.text,
-                    textResponse.typer,
+                    textResponse.type,
                     textResponse.updatedAt,
                     textResponse.createdAt
                 )

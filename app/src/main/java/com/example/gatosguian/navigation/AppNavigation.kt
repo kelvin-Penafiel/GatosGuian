@@ -10,6 +10,7 @@ import com.example.gatosguian.view.ImagenViewModel
 import com.example.gatosguian.view.MainScreen
 import com.example.gatosguian.view.SplashScreen
 import com.example.gatosguian.view.Camera
+import com.example.gatosguian.view.ContenidoNewCats
 import com.example.gatosguian.view.LoginScreen
 
 @Composable
@@ -31,7 +32,15 @@ fun AppNavigation(){
         }
 
         composable(AppScreens.LoginScreen.route) {
-            LoginScreen()
+            LoginScreen(navController)
+        }
+
+        composable("${AppScreens.NewProductScreen.route}/{encodedUri}") { backStackEntry ->
+            val uri = backStackEntry.arguments?.getString("encodedUri")
+            ContenidoNewCats(
+                productImage = uri ?: "",
+                navController
+            )
         }
     }
 }

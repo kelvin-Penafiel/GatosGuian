@@ -73,7 +73,7 @@ private fun takePicture(cameraController: LifecycleCameraController, executor: E
             val encodedUri = Uri.encode(savedUri.toString())
 
             navHostController.navigate("${AppScreens.NewProductScreen.route}/$encodedUri")
-            //*  navHostController.navigate("product/$savedUri")
+            //  navHostController.navigate("product/$savedUri")
             //navHostController.navigate("product")
         }
 
