@@ -46,8 +46,8 @@ class ImagenViewModel: ViewModel(){
     fun filterProducts(query: String) {
         val lowercaseQuery = query.lowercase()
         _filteredImagen.value = allImagen.filter { imagen ->
-            imagen.url.lowercase().contains(lowercaseQuery) ||
-                    imagen.url.lowercase().contains(lowercaseQuery)
+            imagen.width.lowercase().contains(lowercaseQuery) ||
+                    imagen.width.lowercase().contains(lowercaseQuery)
         }
     }
 }

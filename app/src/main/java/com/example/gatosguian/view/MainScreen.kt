@@ -1,6 +1,7 @@
 package com.example.gatosguian.view
 import android.annotation.SuppressLint
 import android.net.Uri
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,6 +28,7 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Divider
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -47,10 +49,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberImagePainter
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.gatosguian.R
 import com.example.gatosguian.model.Product
 import com.example.gatosguian.model.Cat
 import com.example.gatosguian.model.Text
@@ -171,6 +175,17 @@ fun Fotos(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage:
         ListImagen(viewModelImage = viewModelImage, navHostController)
         //Icon(Icons.Outlined.Build, "Amiibos")
         //Text(text = "Fotos")//contenido de la pagina
+        IconButton(
+            onClick = { navHostController.navigate("camera") },
+            modifier = Modifier
+                .padding(16.dp)
+               // .align(Alignment.TopEnd)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.baseline_camera_alt_24), // Aquí debes reemplazar ic_camera con el nombre de tu icono de cámara
+                contentDescription = "Botón de cámara"
+            )
+        }
     }
 }
 
@@ -336,14 +351,14 @@ fun Text (text: Text){
         //https://assets.coincap.io/assets/icons/btc@2x.png
         Box(modifier = Modifier.padding(horizontal = 8.dp)) {
 
-           /* Icon(
+            Icon(
                 imageVector = Icons.Filled.AccountBox,
                 contentDescription = null,
                 tint = Color.Gray,
                 modifier = Modifier
                     .padding(8.dp)
                     .size(30.dp)
-            )*/
+            )
 
         }
         Column() {
@@ -391,16 +406,22 @@ fun Imagen (imagen: Imagen){
         //https://assets.coincap.io/assets/icons/btc@2x.png
         Box(modifier = Modifier.padding(horizontal = 8.dp)) {
 
-            Icon(
+           /* Icon(
                 imageVector = Icons.Filled.AccountBox,
                 contentDescription = null,
                 tint = Color.Gray,
                 modifier = Modifier
                     .padding(8.dp)
                     .size(30.dp)
-            )
+            )*/
 
         }
+        Image(
+            //imageVector = Icons.Filled.AccountBox,
+            painter = rememberImagePainter(imagen.url),
+            contentDescription = null,
+            modifier = Modifier.size(140.dp)
+        )
         Column() {
             Text(
                 text = imagen.width,
