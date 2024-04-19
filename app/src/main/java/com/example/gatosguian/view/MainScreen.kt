@@ -195,7 +195,6 @@ fun ListGatos(viewModel: GatosViewModel, navHostController: NavHostController) {
 
     }
 }
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ListText(viewModelText: TextViewModel, navHostController: NavHostController) {

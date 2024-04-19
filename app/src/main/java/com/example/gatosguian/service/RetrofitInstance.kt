@@ -6,8 +6,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitInstance {
     private  const val BASE_URL = "https://freetestapi.com/api/v1/"
-    private const val BASE_URL_TEXT = "https://cat-fact.herokuapp.com/" //"https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=10"
-    private const val BASE_URL_IMAGEN= "https://api.thecatapi.com/v1/mages/"
+    private const val BASE_URL_TEXT = "https://882d3400-e3ca-4158-b930-6e442a3f547a.mock.pstmn.io/" //"https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=10"
+    private const val BASE_URL_IMAGEN= "https://api.thecatapi.com/v1/images/"
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)

@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class TextViewModel: ViewModel(){
-    private val textsRepository = TextsRepository()
+   private val textsRepository = TextsRepository()
     private val allText= mutableStateListOf<Text>()
     private val _filteredText = MutableStateFlow<List<Text>>(emptyList())
     val filteredText: StateFlow<List<Text>> = _filteredText

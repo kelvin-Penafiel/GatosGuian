@@ -9,6 +9,6 @@ class TextsRepository {
     private val textsService = RetrofitInstance.textsService
 
     suspend fun getTexts(): List<TextResponse> {
-        return textsService.getTexts()
+       return textsService.getTexts()
     }
 }
