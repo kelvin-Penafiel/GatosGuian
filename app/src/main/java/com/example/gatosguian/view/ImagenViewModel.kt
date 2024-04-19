@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class ImagenViewModel: ViewModel(){
-    private val ImagesRepository = ImagensRepository()
+    private val imagesRepository = ImagensRepository()
     private val allImagen = mutableStateListOf<Imagen>()
     private val _filteredImagen = MutableStateFlow<List<Imagen>>(emptyList())
     val filteredImagen: StateFlow<List<Imagen>> = _filteredImagen
@@ -28,7 +28,7 @@ class ImagenViewModel: ViewModel(){
 
     fun fetchImagen() {
         viewModelScope.launch {
-            val response = ImagensRepository.getImagen()
+            val response = imagesRepository.getImagens()
             val imagensResponse = response.map { imagenResponse ->
                 Imagen(
                     imagenResponse.id,
