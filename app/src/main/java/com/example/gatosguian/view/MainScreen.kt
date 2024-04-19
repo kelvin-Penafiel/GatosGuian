@@ -58,18 +58,18 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun MainScreen(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel: ImagenViewModel, navHostController: NavHostController){
+fun MainScreen(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navHostController: NavHostController){
     Column() {
 
         Box(modifier = Modifier.weight(1f)) {
-            MovimientosTab(viewModel = viewModel, navHostController)
+            MovimientosTab(viewModel = viewModel,viewModelText,viewModelImage, navHostController)
         }
     }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MovimientosTab(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel: ImagenViewModel navHostController: NavHostController){
+fun MovimientosTab(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navHostController: NavHostController){
     val tabs = listOf(
         ItemTabs.tab_gatos,
         ItemTabs.tab_juguetes,
@@ -82,7 +82,7 @@ fun MovimientosTab(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel:
         pageCount = { tabs.size } )
     Column {
         Tabs(tabs, pagerState)
-        TabsContent(tabs, pagerState,viewModel, navHostController)
+        TabsContent(tabs, pagerState,viewModel, viewModelText,viewModelImage, navHostController)
     }
 }
 
@@ -116,18 +116,18 @@ fun Tabs(tabs: List<ItemTabs>, pagerState: PagerState) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun TabsContent(tabs: List<ItemTabs>, pagerState: PagerState, viewModel: GatosViewModel, navHostController: NavHostController) {
+fun TabsContent(tabs: List<ItemTabs>, pagerState: PagerState, viewModel: GatosViewModel, viewModelText: TextViewModel, viewModelImage: ImagenViewModel, navHostController: NavHostController) {
     HorizontalPager(
         state = pagerState,
         //pageCount = tabs.size
     ) {page ->
-        tabs[page].screen(viewModel, navHostController)
+        tabs[page].screen(viewModel, viewModelText, viewModelImage, navHostController)
 
     }
 }
 
 @Composable
-fun Gatos(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel: ImagenViewModel, navHostController: NavHostController) {
+fun Gatos(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navHostController: NavHostController) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -142,7 +142,7 @@ fun Gatos(viewModel: GatosViewModel,viewModel: TextViewModel,viewModel: ImagenVi
     }
 }
 @Composable
-fun Opiniones(navHostController: NavHostController) {
+fun Opiniones(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navHostController: NavHostController) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -150,14 +150,14 @@ fun Opiniones(navHostController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        Busqueda()
-        //ListProduct(viewModel = viewModel, navHostController)
+        //Busqueda()
+        ListText(viewModel = viewModel, navHostController)
         //Icon(Icons.Outlined.Build, "Amiibos")
-        Text(text = "Opinion")//contenido de la pagina
+        //Text(text = "Opinion")//contenido de la pagina
     }
 }
 @Composable
-fun Fotos(navHostController: NavHostController) {
+fun Fotos(viewModel: GatosViewModel,viewModelText: TextViewModel,viewModelImage: ImagenViewModel, navHostController: NavHostController) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -165,10 +165,10 @@ fun Fotos(navHostController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        Busqueda()
-        //ListProduct(viewModel = viewModel, navHostController)
+        //Busqueda()
+        ListImagen(viewModel = viewModel, navHostController)
         //Icon(Icons.Outlined.Build, "Amiibos")
-        Text(text = "Fotos")//contenido de la pagina
+        //Text(text = "Fotos")//contenido de la pagina
     }
 }
 
@@ -291,7 +291,5 @@ fun Cat (cat: Cat){
 @Composable
 fun MainScreenPreview(){
     var navHostController = rememberNavController()
-    MainScreen(viewModel = GatosViewModel(), navHostController)
+    //* MainScreen(viewModel = GatosViewModel(), navHostController)
 }
-
-

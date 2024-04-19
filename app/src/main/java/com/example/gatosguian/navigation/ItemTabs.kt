@@ -11,31 +11,33 @@ import androidx.navigation.NavHostController
 import com.example.gatosguian.view.Fotos
 import com.example.gatosguian.view.Gatos
 import com.example.gatosguian.view.GatosViewModel
+import com.example.gatosguian.view.ImagenViewModel
 import com.example.gatosguian.view.Opiniones
+import com.example.gatosguian.view.TextViewModel
 
 sealed class ItemTabs(
     var title: String,
     var iconSelected: ImageVector,
     var iconUnSelected: ImageVector,
-    var screen: @Composable() (viewModel: GatosViewModel, navHostController: NavHostController) -> Unit
+    var screen: @Composable() (viewModel: GatosViewModel, viewModelText: TextViewModel, viewModelImage: ImagenViewModel, navHostController: NavHostController) -> Unit
 ) {
     object tab_gatos : ItemTabs(
         "Razas de Gatos",
         Icons.Filled.Favorite,
         Icons.Filled.FavoriteBorder,
-        {viewModel, navHostController -> Gatos(viewModel = viewModel, navHostController = navHostController) }
+        {viewModel, viewModelText, viewModelImage, navHostController -> Gatos(viewModel = viewModel, viewModelText = viewModelText, viewModelImage = viewModelImage, navHostController = navHostController) }
     )
 
     object tab_juguetes : ItemTabs(
         "Opiniones",
         Icons.Filled.Info,
         Icons.Filled.Info,
-        {viewModel, navHostController -> Opiniones(navHostController = navHostController) }
+        {viewModel, viewModelText, viewModelImage, navHostController -> Opiniones(viewModel= viewModel, viewModelText = viewModelText, viewModelImage = viewModelImage, navHostController = navHostController) }
     )
     object tab_veterinarios : ItemTabs(
         "Fotos",
         Icons.Filled.AccountBox,
         Icons.Filled.AccountBox,
-        {viewModel, navHostController -> Fotos(navHostController = navHostController) }
+        {viewModel, viewModelText, viewModelImage, navHostController -> Fotos(viewModel= viewModel, viewModelText = viewModelText, viewModelImage = viewModelImage, navHostController = navHostController) }
     )
 }
